@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CORGI SUPREMACY</title>
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <div class="container">
+      <h1>Clique no botão e gere um Corgi!</h1>
+      <button id="generate-button">Gerar Corgi</button>
+      <br />
+      <img id="dog-image" src="" />
+    </div>
+    <script>
+      $("#generate-button").click(function () {
+        var breeds = ["corgi"];
+        var randomBreed = breeds[Math.floor(Math.random() * breeds.length)];
+        $.get(
+          "https://dog.ceo/api/breed/" + randomBreed + "/images/random",
+          function (data) {
+            $("#dog-image").attr("src", data.message);
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
